@@ -36,9 +36,14 @@ The API will be available at: **http://127.0.0.1:8000**
 
 To run the project without Docker, follow these steps:
 
+### Pre-requisite
+
+1. Python > 3.9
+2. git lfs installed
+
 ```bash
 # Step 1: Clone the Repository
-git clone https://github.com/Dharansh-Neema/image-tampering-detection
+git lfs clone https://github.com/Dharansh-Neema/image-tampering-detection.git
 cd image-tampering-detection
 
 # Step 2: Install Dependencies
