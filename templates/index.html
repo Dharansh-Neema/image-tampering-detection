@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Image Tampering Detection</title>
+    <link rel="stylesheet" type="text/css" href="/static/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Image Tampering Detection</h1>
+      <form id="upload-form" enctype="multipart/form-data">
+        <input
+          type="file"
+          id="file-input"
+          name="file"
+          accept="image/*"
+          required
+        />
+        <button type="submit">Upload & Predict</button>
+      </form>
+      <div id="result"></div>
+      <footer>
+        <p>Created by Dharansh!</p>
+        <div class="profiles">
+          <a href="https://github.com/Dharansh-Neema/" target="_blank">
+            <img
+              src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+              alt="GitHub Logo"
+            />
+            GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/dharanshneema/" target="_blank">
+            <img
+              src="https://content.linkedin.com/content/dam/me/brand/en-us/brand-home/logos/In-Blue-Logo.png.original.png"
+              alt="LinkedIn Logo"
+            />
+            LinkedIn
+          </a>
+        </div>
+      </footer>
+    </div>
+    <script>
+      const form = document.getElementById("upload-form");
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const fileInput = document.getElementById("file-input");
+        const file = fileInput.files[0];
+        if (!file) {
+          alert("Please select an image file.");
+          return;
+        }
+        const formData = new FormData();
+        formData.append("file", file);
+
+        try {
+          const response = await fetch("/predict", {
+            method: "POST",
+            body: formData,
+          });
+          const data = await response.json();
+          const resultDiv = document.getElementById("result");
+          resultDiv.innerHTML = `<p>File: ${data.filename}</p><p><b>Prediction: ${data.prediction}</b></p>`;
+        } catch (error) {
+          console.error("Error during fetch:", error);
+        }
+      });
+    </script>
+  </body>
+</html>
