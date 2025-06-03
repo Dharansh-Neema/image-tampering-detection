@@ -4,6 +4,8 @@ This repository contains a **Convolutional Neural Network (CNN)** model designed
 
 ---
 
+### Try it out (EC2) : http://13.126.196.241:8000/
+
 ## **🚀 API Usage**
 
 ### **POST /predict**
@@ -36,21 +38,46 @@ The API will be available at: **http://127.0.0.1:8000**
 
 To run the project without Docker, follow these steps:
 
+### Pre-requisite
+
+1. Python > 3.9
+2. git lfs installed
+
 ```bash
 # Step 1: Clone the Repository
-git clone https://github.com/Dharansh-Neema/image-tampering-detection
+git lfs clone https://github.com/Dharansh-Neema/image-tampering-detection.git
 cd image-tampering-detection
 
 # Step 2: Install Dependencies
 pip install -r requirements.txt
 
 # Step 3: Run the FastAPI Server
-uvicorn main:app --reload
+uvicorn main:app
 ```
 
 Access the API at **http://127.0.0.1:8000**
 
 ---
+
+## cURL
+
+Below is the cURL to test it out. Replace testcase.jpg with an actual jpeg image.
+
+```
+curl --location 'http://13.126.196.241:8000/predict' \
+--form 'file=@"testcase.jpg"'
+```
+
+## **Test Cases**
+
+1. Original image :
+   ![original image](util/original_recipt.jpg)
+   Result :
+   ![Result](util/original_result.png)
+
+2. Tampered Image :
+   ![tampered image](util/Tampered_testcase.jpg)
+   ![result](util/tampared_result.png)
 
 ## **📊 Training Performance**
 

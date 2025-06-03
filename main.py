@@ -85,7 +85,7 @@ async def predict(file: UploadFile = File(...)):
     # Map prediction index to class name
     class_names = {0: "Original", 1: "Tampered"}
     prediction = class_names.get(prediction_idx, "Unknown")
-    logger.debug("Prediction: ", prediction)
+    print("Prediction: ", prediction)
     return JSONResponse({"filename": file.filename, "prediction": prediction})
 
 if __name__ == "__main__":
