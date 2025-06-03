@@ -64,7 +64,9 @@ Below are the **training vs validation curves** for accuracy and loss:
 
 ![Epoch Training](util/Epoch_data.png)
 
----
+### ** Model Architecture **
+
+## ![model architecture](util/image.png)
 
 ### **📝 Author**
 
